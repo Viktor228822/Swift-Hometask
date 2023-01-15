@@ -28,3 +28,4 @@ var `default` = 177
 
 print(`default`)
 
+print(f)
