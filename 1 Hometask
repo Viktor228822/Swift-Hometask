@@ -1,0 +1,30 @@
+import Foundation
+
+var name = "Viktor"
+
+var surname: String = "Aladin"
+
+var age: Int = 26
+
+var zarplata = 27652.28 * 7
+
+print(Double(age) + zarplata)
+
+print(name + " " + surname + " " + "\(age)")
+
+print(name, surname, String(age))
+
+var i = Double(age) / 2
+
+var f = String(i)
+
+if f.hasSuffix("0"){
+  print(name, "\(zarplata)")
+} else {
+  print(surname)
+}
+
+var `default` = 177
+
+print(`default`)
+
