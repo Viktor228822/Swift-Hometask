@@ -1,0 +1,34 @@
+import Foundation
+
+let name = "Viktor"                             // (1)
+
+let surname: String = "Aladin"                  // (2)
+
+let age: Int = 26                               // (3)
+
+let salary = 27652.28 * 7                       // (4)
+
+print(Double(age) + salary)                     // (5)
+
+print("\(name) \(surname) \(age)")              // (6.1)
+
+print(String(format: "%@ %@ %d", name, surname, age))
+
+print(name, surname, String(age))               // (6.2)
+
+if age.isMultiple(of: 2) == true{               // (7.1)
+  print(name, "\(salary)")
+} else {
+  print(surname)
+}
+
+if age % 2 == 0{                                // (7.2)
+  print(name, "\(salary)")
+} else {
+  print(surname)
+}
+
+let `default` = 177                             // (P.S.)
+
+print(`default`)
+
