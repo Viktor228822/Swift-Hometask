@@ -1,0 +1,31 @@
+import Foundation
+
+var optionalVariable: Int? 
+
+//print("Переменная = \(optionalVariable!), но если nil- был бы краш")        // (1)
+
+if optionalVariable != nil {                                                  // (2)
+  print("Variable = \(optionalVariable!)")
+} else {
+  print("It's empty")
+}
+
+func guardPrint (variable: Int?) {                                            // (P.S.)
+guard let tempVariable = variable else { 
+  print("переменной нет")
+  return
+}
+  print(" переменная равна \(variable!)")
+}
+
+guardPrint (variable: optionalVariable)
+
+if let tempVariable = optionalVariable {                                      // (3)
+  print("Переменная = \(tempVariable)")
+} else {
+  print("Переменная не введена")
+}
+
+let unionVariable = optionalVariable ?? 0                                     // (4)
+
+print("3 способ - \(unionVariable)")
