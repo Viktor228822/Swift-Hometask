@@ -1,0 +1,204 @@
+import Foundation
+
+let firstArray = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]        // (1.1)
+
+print("""
+(1) явно заданный массив: 
+    \(firstArray)
+""")
+
+var secondArray: [Int] = []                                          // (1.2)
+
+for _ in 1...10 {
+  secondArray += [Int.random(in: 0..<10)]
+}
+print("""
+
+(2) массив, заполняемый случайными числами: 
+    \(secondArray)
+""")
+
+let thirdArray = Array(repeating: 5, count: 10)                      // (1.3)
+
+print("""
+
+(3) массив, заполняемый повторением: 
+    \(thirdArray)
+""")
+
+var sortedArray = secondArray.sorted()                               // (1.4)
+
+print("""
+
+(4) массив №2, отсортированный по возрастанию: 
+    \(sortedArray)
+""")
+
+var tempArray = [Int]()                                              // (1.5)
+
+for i in 0..<sortedArray.count {
+  if sortedArray[i] % 3 != 0 {
+    tempArray.append(sortedArray[i])
+     } 
+}
+
+print("""
+
+(5) массив №4, отфильтрованный по делению на 3 без остатка: 
+    \(tempArray)
+
+""")
+
+var mySet: Set = ["Gamma", "Alpha", "Zet", "Charlie"]                  // (2)
+                                                                // наебалово какое то
+var setToArray = mySet.sorted(by: >)
+
+print("\(setToArray)\n")
+
+mySet = Set(setToArray)
+
+print("\(mySet)\n")
+
+var myDictionary: [String: Any?] = [:]                                 // (3.1)
+
+myDictionary = ["сотка (int)": 100, "строка (string)": "stroka"]       // (3.2)
+
+myDictionary["булевая (bool)"] = true
+
+myDictionary.updateValue(nil, forKey: "ПУСТОЙ")
+
+myDictionary["массив (Array)"] = [555, 666, 777, 666]
+
+myDictionary["множество (Set)"] = mySet
+
+print("\(myDictionary)\n")
+
+if let tempVariable = myDictionary["сотка (int)"] as? Int {                    // (3.3)
+  print("Искомое значение = \(tempVariable)")
+  print(type(of: tempVariable))
+} else {
+    print("Искомое значение не введено")
+  }
+
+if let tempVariable = myDictionary["строка (string)"] as? String { 
+  print("Искомое значение = \(tempVariable)")
+  print(type(of: tempVariable))
+} else {
+    print("Искомое значение не введено")
+  }
+
+if let tempVariable = myDictionary["булевая (bool)"] as? Bool { 
+  print("Искомое значение = \(tempVariable)")
+  print(type(of: tempVariable))
+  } else {
+    print("Искомое значение не введено")
+  }
+
+if let tempVariable = myDictionary["массив (Array)"] as? [Int] { 
+  print("Искомое значение = \(tempVariable)")
+  print(type(of: tempVariable))
+} else {
+    print("Искомое значение не введено")
+  }
+
+if let tempVariable = myDictionary["множество (Set)"] as? Set<String> { 
+  print("Искомое значение = \(tempVariable)")
+  print(type(of: tempVariable))
+} else {
+    print("Искомое значение не введено")
+  }
+
+if let tempVariable = myDictionary["ПУСТОЙ"] { 
+  print("Искомое значение = \(tempVariable)")
+  print(type(of: tempVariable))
+} else {
+    print("Искомое значение не введено")
+  }
+
+print("\n", Array(myDictionary.values),"\n")
+
+for (key, value) in myDictionary {                                      // (3.4)
+        print("\(key) : \(value ?? "пусто")\n")
+    }
+
+myDictionary.removeValue(forKey: "массив (Array)")                      // (3.5)
+
+print(myDictionary)
+
+var optionalArray: [Int?] = []                                          // (4.1)
+
+for _ in 1...10 {
+  optionalArray += [Int.random(in: 0..<10)]
+}
+print("""
+
+массив из опциональных чисел: 
+    \(optionalArray)
+
+""")
+
+print("""
+
+массив из опционалов *5: 
+    \(optionalArray.map { ($0 ?? 0)*5 })
+
+""")
+
+var tmpArr: [Int?] = []                                              // (4.3)
+
+let numberForCompare = 4
+
+for i in 0..<optionalArray.count {
+  if optionalArray[i] != nil {
+    if optionalArray[i]! > optionalArray[numberForCompare]! {
+      tmpArr.append(optionalArray[i])
+    }
+  }
+}
+print("""
+
+    \(numberForCompare+1)й элемент массива = \(optionalArray[numberForCompare])
+все что больше: 
+    \(tmpArr)
+
+""")
+
+print(optionalArray, "\n")
+
+var newArr: [Int] = []                                                    // (5.2)
+
+for i in 0..<optionalArray.count {
+  if optionalArray[i] != nil {
+    newArr.append(optionalArray[i]!) 
+    } 
+}
+
+print("""
+
+ сумма (1 способ): 
+    \(newArr.reduce(0, +))
+
+""")
+
+var num = 0                                                               // (5.3)
+
+for number in newArr {
+num += number
+}
+
+print("""
+
+ сумма (2 способ): 
+    \(num)
+
+""")
+
+
+
+print("""
+
+ сумма (3 способ): 
+    \(newArr.reduce(0, { x, y in x + y}))
+
+""")
+
