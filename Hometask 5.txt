@@ -130,6 +130,8 @@ var optionalArray: [Int?] = []                                          // (4.1)
 for _ in 1...10 {
   optionalArray += [Int.random(in: 0..<10)]
 }
+optionalArray[1] = nil
+
 print("""
 
 массив из опциональных чисел: 
@@ -140,38 +142,35 @@ print("""
 print("""
 
 массив из опционалов *5: 
-    \(optionalArray.map { ($0 ?? 0)*5 })
+    \(optionalArray.compactMap { $0 }
+                   .map { $0*5 })
+
+""")
+print("""
+
+массив из опциональных чисел: 
+    \(optionalArray)
 
 """)
 
-var tmpArr: [Int?] = []                                              // (4.3)
+let numberForCompare = 4                                           // (4.3)
 
-let numberForCompare = 4
+let comparison = optionalArray.map{ $0 ?? 0 }
+                            .filter{ $0 > optionalArray.map{ $0 ?? 0 }[numberForCompare]}
 
-for i in 0..<optionalArray.count {
-  if optionalArray[i] != nil {
-    if optionalArray[i]! > optionalArray[numberForCompare]! {
-      tmpArr.append(optionalArray[i])
-    }
-  }
-}
 print("""
 
     \(numberForCompare+1)й элемент массива = \(optionalArray[numberForCompare])
 все что больше: 
-    \(tmpArr)
+    \(comparison)
 
 """)
 
 print(optionalArray, "\n")
 
-var newArr: [Int] = []                                                    // (5.2)
+let newArr = optionalArray.compactMap ({ $0 })                     // (5.2)
 
-for i in 0..<optionalArray.count {
-  if optionalArray[i] != nil {
-    newArr.append(optionalArray[i]!) 
-    } 
-}
+print(newArr)
 
 print("""
 
@@ -192,8 +191,6 @@ print("""
     \(num)
 
 """)
-
-
 
 print("""
 
