@@ -155,8 +155,8 @@ print("""
 
 let numberForCompare = 4                                           // (4.3)
 
-let comparison = optionalArray.map{ $0 ?? 0 }
-                            .filter{ $0 > optionalArray.map{ $0 ?? 0 }[numberForCompare]}
+let comparison = optionalArray.map { $0 ?? 0 }
+                          .filter { $0 > optionalArray.map { $0 ?? 0 }[numberForCompare] }
 
 print("""
 
@@ -168,7 +168,7 @@ print("""
 
 print(optionalArray, "\n")
 
-let newArr = optionalArray.compactMap ({ $0 })                     // (5.2)
+let newArr = optionalArray.compactMap { $0 }                     // (5.2)
 
 print(newArr)
 
