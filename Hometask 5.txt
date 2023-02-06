@@ -155,8 +155,14 @@ print("""
 
 let numberForCompare = 4                                           // (4.3)
 
-let comparison = optionalArray.map { $0 ?? 0 }
-                          .filter { $0 > optionalArray.map { $0 ?? 0 }[numberForCompare] }
+var elementForCompare: Int = 0
+
+if let x = optionalArray[4] {
+  elementForCompare = x
+} 
+
+let comparison = optionalArray.compactMap { $0 }
+                              .filter { $0 > elementForCompare }
 
 print("""
 
