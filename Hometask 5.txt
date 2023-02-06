@@ -157,7 +157,7 @@ let numberForCompare = 4                                           // (4.3)
 
 var elementForCompare: Int = 0
 
-if let x = optionalArray[4] {
+if let x = optionalArray[numberForCompare] {
   elementForCompare = x
 } 
 
